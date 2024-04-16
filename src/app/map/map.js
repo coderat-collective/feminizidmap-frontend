@@ -1,32 +1,34 @@
 // this is necessary since leaflet is not server-side compatible
 "use client"
 
-import styles from "./page.module.css";
-import { MapContainer, TileLayer, CircleMarker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import Map, { Marker } from 'react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
-export default function Map({ cases }) {
-  const position = [52, 12]
-
+export default function CasesMap({ cases }) {
   return <div>
-    <MapContainer
-      className={styles.mapContainer}
-      center={position}
-      zoom={7}
-      scrollWheelZoom={false}
+    <Map
+      mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
+      mapLib={import('mapbox-gl')}
+      attributionControl={false}
+      initialViewState={{
+        longitude: 11,
+        latitude: 52,
+        zoom: 6
+      }}
+      style={{width: "100%", height: "70vh"}}
+      mapStyle="mapbox://styles/jo5cha/clv2eb5jl00c301qr7qdua42f"
     >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
-      />
       {cases.map((c) => (
-        <CircleMarker
+        <Marker
           key={c.id}
-          center={[c.address?.coordinates?.coordinates?.lat || 0, c.address?.coordinates?.coordinates?.lng || 0]}
-          pathOptions={{ color: 'rgb(181, 35, 243)', opacity: 0, fillOpacity: 0.5 }}
-          radius={7}
-        />
+          longitude={c.address?.coordinates?.coordinates?.lng || 0}
+          latitude={c.address?.coordinates?.coordinates?.lat || 0}
+          anchor="bottom"
+          color="black"
+        >
+        </Marker>
       ))}
-    </MapContainer>
+    </Map>
   </div>
 }

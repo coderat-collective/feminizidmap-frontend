@@ -1,0 +1,4 @@
+.mapboxgl-map {
+  background-color: red;
+  min-height: 500px !important;
+}

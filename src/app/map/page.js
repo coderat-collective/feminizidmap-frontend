@@ -1,11 +1,11 @@
-import styles from "./page.module.css";
 import dynamic from 'next/dynamic';
+import "./page.css";
 
 // this is necessary since leaflet is not server-side compatible
 const Map = dynamic(() => import("./map.js"), { ssr: false })
 
 async function getData() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/cases?populate=deep&pagination[pageSize]=100000`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/cases?populate=deep&pagination[pageSize]=100`);
   if (!res.ok) { throw new Error('Failed to fetch data') }
   return res.json()
 }
@@ -13,7 +13,7 @@ async function getData() {
 export default async function Page() {
   const data = await getData();
 
-  return <main className={styles.main}>
+  return <main>
     <div className="mb-3">
       <Map cases={data.data} />
     </div>
