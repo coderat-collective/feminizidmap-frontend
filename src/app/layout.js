@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Container>
-          <span className="purple main-heading text-center">FeminizidMap.org</span>
+          <span className="purple main-heading text-center d-none d-lg-block">FeminizidMap.org</span>
           <Navigation />
           <div className="my-4">
             {children}

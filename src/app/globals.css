@@ -9,6 +9,8 @@ p {
 .main-heading {
   font-size: 8cqw;
   font-weight: 300;
+  text-align: center;
+  width: 100%;
 }
 
 .navbar {
@@ -20,5 +22,8 @@ p {
 .nav-link {
   color: black;
   font-weight: 600;
-  font-size: 2rem;
+}
+
+.navbar-toggler {
+  border: none;
 }

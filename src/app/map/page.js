@@ -3,7 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import "./page.css";
 
 async function getData() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/cases?populate=deep&pagination[pageSize]=100000`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/cases?populate=deep&pagination[pageSize]=200`);
   if (!res.ok) { throw new Error('Failed to fetch data') }
   return res.json()
 }
