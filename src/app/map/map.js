@@ -1,7 +1,6 @@
 // this is necessary since leaflet is not server-side compatible
 "use client"
 
-import "leaflet/dist/leaflet.css";
 import Map, { Marker } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
