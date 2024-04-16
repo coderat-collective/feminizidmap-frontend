@@ -20,6 +20,7 @@ export default function CasesMap({ cases }) {
     >
       {cases.map((c) => (
         <Marker
+          onClick={() => console.log(c)}
           key={c.id}
           longitude={c.address?.coordinates?.coordinates?.lng || 0}
           latitude={c.address?.coordinates?.coordinates?.lat || 0}

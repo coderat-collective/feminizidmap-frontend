@@ -1,4 +1,13 @@
 .mapboxgl-map {
-  background-color: red;
   min-height: 500px !important;
+}
+
+.case-card {
+  background: #e1e1e1;
+  height: 100px;
+  border-radius: 20px;
+}
+
+.mapboxgl-ctrl-logo {
+  display: none !important;
 }

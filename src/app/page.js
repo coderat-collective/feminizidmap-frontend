@@ -1,7 +1,5 @@
-import styles from "./page.module.css";
-
 export default async function Page() {
-  return <main className={styles.main}>
+  return <main>
     <h1 className="purple display-1 fw-bold">A research project on femi(ni)cides in Germany</h1>
     <p>
       We document all murders of women* by men in Germany and we develop an online database on femi(ni)cide, the killing of women* because they are women*.
