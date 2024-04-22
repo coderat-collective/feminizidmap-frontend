@@ -14,7 +14,7 @@ export default function Navigation() {
             <Link className="nav-link fs-2" href="/">HOME</Link>
             <Link className="nav-link fs-2" href="/about">ABOUT</Link>
             <Link className="nav-link fs-2" href="/map">MAP</Link>
-            <Link className="nav-link fs-2" href="/">DATABASE</Link>
+            <Link className="nav-link fs-2" href="/database">DATABASE</Link>
             <Link className="nav-link fs-2" href="/">REPORTS</Link>
             <Link className="nav-link fs-2" href="/">TEAM</Link>
             <Link className="nav-link fs-2" href="/">FAQ</Link>

@@ -1,0 +1,11 @@
+.case-card {
+  background: #e1e1e1;
+  height: 100px;
+  cursor: pointer;
+}
+
+.case-card.active {
+  background: rgb(181, 35, 243);
+  border-radius: 20px;
+}
+

@@ -1,5 +1,5 @@
-import Map from "./map";
 import "./page.css";
+import CasesList from "./CasesList";
 
 async function getData() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/cases?populate=deep&pagination[pageSize]=200`);
@@ -11,8 +11,6 @@ export default async function Page() {
   const data = await getData();
 
   return <main>
-    <div className="mb-3">
-      <Map cases={data.data} />
-    </div>
+    <CasesList cases={data} />
   </main>
 }
