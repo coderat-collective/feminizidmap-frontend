@@ -1,13 +1,14 @@
 import { Container, Nav, Navbar, NavbarBrand, NavbarToggle, NavbarCollapse } from 'react-bootstrap';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Navigation() {
   return (
     <Navbar expand="lg" className='mt-3'>
       <Container>
-        <NavbarBrand class="d-flex" href="/">
+        <NavbarBrand className="d-flex" href="/">
           <div style={{ width: 300 }} className='d-inline-block d-lg-none'>
-            <img src="/title.svg" className="float-start w-100" />
+            <Image alt="FeminizidMap.org" src="/title.svg" className="float-start w-100 h-auto" width={0} height={0} />
           </div>
         </NavbarBrand>
         <NavbarToggle aria-controls="basic-navbar-nav" />

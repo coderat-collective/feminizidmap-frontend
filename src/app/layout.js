@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Container } from "react-bootstrap";
 import Navigation from "./Navigation.js";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Container>
-          <img src="/title.svg" className="pt-4 d-none d-lg-block w-100" />
+          <Image alt="FeminizidMap.org" src="/title.svg" className="pt-3 d-none d-lg-block w-100 h-auto" width={0} height={0} />
           <Navigation />
           <div className="my-4">
             {children}

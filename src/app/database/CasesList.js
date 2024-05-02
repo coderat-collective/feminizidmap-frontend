@@ -11,21 +11,21 @@ export default function CasesList({ cases }) {
     const activeClass = activeCase && activeCase.id === c.id ? "active" : "";
 
     return <div onClick={() => setActiveCase(c)}>
-      <div className={"case-card p-3 my-3 d-flex flex-column align-items-center " + activeClass}>
+      <div className={"case-card p-3 my-3 d-flex flex-column align-items-center justify-content-center " + activeClass}>
         <div>{c.crime_date}</div>
-        <h2>{c.address.city}</h2>
+        <h2 className="fs-3">{c.address.city}</h2>
       </div>
     </div>
   }
 
   return <Row>
-    <Col xs={12} md={5}>
+    <Col xs={12} md={5} style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 350px)' }}>
       {cases.data.map((c) => (
         <CaseCard key={c.id} c={c} />
       ))}
     </Col>
     <Col xs={12} md={7}>
-      {activeCase && <div>
+      {activeCase && <div className="mt-3 ms-md-4">
         <h2>{activeCase.address.city}</h2>
         <p className="fs-4">{activeCase.crime_date}</p>
         <p className="fs-4">{activeCase.crime?.description_of_crimescene}</p>
