@@ -6,13 +6,6 @@ p {
   font-size: 2rem;
 }
 
-.main-heading {
-  font-size: 8cqw;
-  font-weight: 300;
-  text-align: center;
-  width: 100%;
-}
-
 .navbar {
   background: none;
   border-top: 4px solid black;

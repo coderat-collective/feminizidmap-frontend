@@ -5,8 +5,10 @@ export default function Navigation() {
   return (
     <Navbar expand="lg" className='mt-3'>
       <Container>
-        <NavbarBrand href="/">
-          <div className='d-lg-none purple fs-1'>FeminizidMap.org</div>
+        <NavbarBrand class="d-flex" href="/">
+          <div style={{ width: 300 }} className='d-inline-block d-lg-none'>
+            <img src="/title.svg" className="float-start w-100" />
+          </div>
         </NavbarBrand>
         <NavbarToggle aria-controls="basic-navbar-nav" />
         <NavbarCollapse id="basic-navbar-nav">
