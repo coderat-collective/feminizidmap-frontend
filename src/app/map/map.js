@@ -32,7 +32,7 @@ export default function CasesMap({ cases }) {
         zoom: 6
       }}
       style={{width: "100%", height: "70vh"}}
-      mapStyle="mapbox://styles/jo5cha/clv2eb5jl00c301qr7qdua42f"
+      mapStyle="mapbox://styles/jo5cha/clvqd5pkk01pg01qpa4t518pn"
     >
        <Source
           id="cases"
@@ -51,9 +51,9 @@ export default function CasesMap({ cases }) {
               'circle-color': [
                 'step',
                 ['get', 'point_count'],
-                '#d900a3', 5,
-                '#d90094', 10,
-                '#d9004c',
+                '#ff66ff', 5,
+                '#ff33cc', 10,
+                '#cc0099',
               ],
               'circle-radius': [
                 'step',
@@ -81,7 +81,7 @@ export default function CasesMap({ cases }) {
             source="cases"
             filter={['!', ['has', 'point_count']]}
             paint={{
-              'circle-color': '#d900a3',
+              'circle-color': '#ff66ff',
               'circle-radius': 10,
               'circle-stroke-width': 0
             }}
