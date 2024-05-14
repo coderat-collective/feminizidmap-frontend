@@ -118,8 +118,8 @@ export default function CasesMap({ cases }) {
 
     <div>
       {selectedCases.map((c) =>
-        <div className='mt-4'>
-          <CaseDetails props={c.properties} key={c.properties.id}></CaseDetails>
+        <div className='mt-4' key={c.properties.id}>
+          <CaseDetails props={c.properties}></CaseDetails>
         </div>
       )}
     </div>
