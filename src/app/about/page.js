@@ -1,6 +1,6 @@
 export default async function Page() {
   return <main>
-    <p>
+    <p className="fs-3">
       We document all femi(ni)cides and killings of women* and girls* in Germany.
       Femi(ni)cide is intended to apply to certain killings of women* and girls* by men,
       those which occur in a context of a hierarchical power relationships where

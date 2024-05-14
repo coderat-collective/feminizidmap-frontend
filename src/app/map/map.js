@@ -1,10 +1,16 @@
 // this is necessary since leaflet is not server-side compatible
 "use client"
 
-import Map, { Marker, Source, Layer } from 'react-map-gl';
+import { useRef, useState } from 'react';
+import CaseDetails from '../CaseDetails';
+import Map, { Source, Layer } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 export default function CasesMap({ cases }) {
+  const mapRef = useRef();
+
+  const [selectedCases, setSelectedCases] = useState([]);
+
   const geojson = {
     type: 'FeatureCollection',
     features: cases.map((c) => ({
@@ -20,8 +26,26 @@ export default function CasesMap({ cases }) {
     })),
   };
 
+  const setCases = (event) => {
+    const map = mapRef.current;
+    const singlePoint = map.queryRenderedFeatures(event.point, { layers: ['unclustered-point'] });
+    const clusters = map.queryRenderedFeatures(event.point, { layers: ['clusters'] });
+
+    if (singlePoint.length) {
+      setSelectedCases([singlePoint[0]]);
+    } else if (clusters.length) {
+      const clusterId = clusters[0].properties.cluster_id;
+      const pointCount = clusters[0].properties.point_count;
+      const clusterSource = map.getSource('cases');
+      clusterSource.getClusterLeaves(clusterId, pointCount, 0, function(_err, aFeatures) {
+        setSelectedCases(aFeatures);
+      })
+    }
+  };
+
   return <div>
     <Map
+      ref={mapRef}
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
       mapLib={import('mapbox-gl')}
       attributionControl={false}
@@ -31,8 +55,9 @@ export default function CasesMap({ cases }) {
         latitude: 52,
         zoom: 6
       }}
-      style={{width: "100%", height: "70vh"}}
+      style={{width: "100%", height: "calc(100vh - 400px)"}}
       mapStyle="mapbox://styles/jo5cha/clvqd5pkk01pg01qpa4t518pn"
+      onClick={setCases}
     >
        <Source
           id="cases"
@@ -90,5 +115,13 @@ export default function CasesMap({ cases }) {
           />
         </Source>
     </Map>
+
+    <div>
+      {selectedCases.map((c) =>
+        <div className='mt-4'>
+          <CaseDetails props={c.properties} key={c.properties.id}></CaseDetails>
+        </div>
+      )}
+    </div>
   </div>
 }
