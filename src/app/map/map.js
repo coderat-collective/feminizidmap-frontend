@@ -1,10 +1,15 @@
 // this is necessary since leaflet is not server-side compatible
 "use client"
 
-import Map, { Marker, Source, Layer } from 'react-map-gl';
+import { useRef, useState } from 'react';
+import Map, { Source, Layer } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 export default function CasesMap({ cases }) {
+  const mapRef = useRef();
+
+  const [selectedCases, setSelectedCases] = useState([]);
+
   const geojson = {
     type: 'FeatureCollection',
     features: cases.map((c) => ({
@@ -20,8 +25,32 @@ export default function CasesMap({ cases }) {
     })),
   };
 
+  const getClusteredFeatures = (event) => {
+    let features;
+    const map = mapRef.current;
+
+    const singlePoint = map.queryRenderedFeatures(event.point, { layers: ['unclustered-point'] });
+
+
+    const clusters = map.queryRenderedFeatures(event.point, { layers: ['clusters'] });
+    const clusterId = clusters[0].properties.cluster_id;
+    const pointCount = clusters[0].properties.point_count;
+    const clusterSource = map.getSource('cases');
+
+    clusterSource.getClusterLeaves(clusterId, pointCount, 0, function(_err, aFeatures) {
+      setSelectedCases(aFeatures);
+      console.log(selectedCases);
+    })
+  };
+
   return <div>
+    <h2>Selected Cases</h2>
+    <ul>
+      {selectedCases.map((c) => <li key={c.properties.id}>{c.properties.identifier}</li>)}
+    </ul>
+
     <Map
+      ref={mapRef}
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
       mapLib={import('mapbox-gl')}
       attributionControl={false}
@@ -33,6 +62,7 @@ export default function CasesMap({ cases }) {
       }}
       style={{width: "100%", height: "70vh"}}
       mapStyle="mapbox://styles/jo5cha/clvqd5pkk01pg01qpa4t518pn"
+      onClick={getClusteredFeatures}
     >
        <Source
           id="cases"
