@@ -2,6 +2,7 @@
 "use client"
 
 import { useRef, useState } from 'react';
+import CaseDetails from '../CaseDetails';
 import Map, { Source, Layer } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -25,30 +26,24 @@ export default function CasesMap({ cases }) {
     })),
   };
 
-  const getClusteredFeatures = (event) => {
-    let features;
+  const setCases = (event) => {
     const map = mapRef.current;
-
     const singlePoint = map.queryRenderedFeatures(event.point, { layers: ['unclustered-point'] });
-
-
     const clusters = map.queryRenderedFeatures(event.point, { layers: ['clusters'] });
-    const clusterId = clusters[0].properties.cluster_id;
-    const pointCount = clusters[0].properties.point_count;
-    const clusterSource = map.getSource('cases');
 
-    clusterSource.getClusterLeaves(clusterId, pointCount, 0, function(_err, aFeatures) {
-      setSelectedCases(aFeatures);
-      console.log(selectedCases);
-    })
+    if (singlePoint.length) {
+      setSelectedCases([singlePoint[0]]);
+    } else if (clusters.length) {
+      const clusterId = clusters[0].properties.cluster_id;
+      const pointCount = clusters[0].properties.point_count;
+      const clusterSource = map.getSource('cases');
+      clusterSource.getClusterLeaves(clusterId, pointCount, 0, function(_err, aFeatures) {
+        setSelectedCases(aFeatures);
+      })
+    }
   };
 
   return <div>
-    <h2>Selected Cases</h2>
-    <ul>
-      {selectedCases.map((c) => <li key={c.properties.id}>{c.properties.identifier}</li>)}
-    </ul>
-
     <Map
       ref={mapRef}
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
@@ -60,9 +55,9 @@ export default function CasesMap({ cases }) {
         latitude: 52,
         zoom: 6
       }}
-      style={{width: "100%", height: "70vh"}}
+      style={{width: "100%", height: "calc(100vh - 400px)"}}
       mapStyle="mapbox://styles/jo5cha/clvqd5pkk01pg01qpa4t518pn"
-      onClick={getClusteredFeatures}
+      onClick={setCases}
     >
        <Source
           id="cases"
@@ -120,5 +115,13 @@ export default function CasesMap({ cases }) {
           />
         </Source>
     </Map>
+
+    <div>
+      {selectedCases.map((c) =>
+        <div className='mt-4'>
+          <CaseDetails props={c.properties} key={c.properties.id}></CaseDetails>
+        </div>
+      )}
+    </div>
   </div>
 }
