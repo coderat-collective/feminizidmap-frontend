@@ -1,6 +1,4 @@
 export default function CaseDetails({ props }) {
-
-  console.log(props);
   return (
     <div className="mb-5">
       <h3 className="mb-3">{props.crime_date} {props.address?.city}</h3>

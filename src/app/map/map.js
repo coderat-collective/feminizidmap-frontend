@@ -28,15 +28,17 @@ export default function CasesMap({ cases }) {
 
   const setCases = (event) => {
     const map = mapRef.current;
+    const clusterSource = map.getSource('cases');
     const singlePoint = map.queryRenderedFeatures(event.point, { layers: ['unclustered-point'] });
     const clusters = map.queryRenderedFeatures(event.point, { layers: ['clusters'] });
 
     if (singlePoint.length) {
-      setSelectedCases([singlePoint[0]]);
+      const caseId = singlePoint[0].properties.id;
+      const features = clusterSource._data.features.filter((f) => f.properties.id === caseId);
+      setSelectedCases(features);
     } else if (clusters.length) {
       const clusterId = clusters[0].properties.cluster_id;
       const pointCount = clusters[0].properties.point_count;
-      const clusterSource = map.getSource('cases');
       clusterSource.getClusterLeaves(clusterId, pointCount, 0, function(_err, aFeatures) {
         setSelectedCases(aFeatures);
       })
