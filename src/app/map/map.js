@@ -51,9 +51,9 @@ export default function CasesMap({ cases }) {
               'circle-color': [
                 'step',
                 ['get', 'point_count'],
-                '#ff66ff', 5,
-                '#ff33cc', 10,
-                '#cc0099',
+                'darkgrey', 5,
+                'grey', 10,
+                'black',
               ],
               'circle-radius': [
                 'step',
@@ -71,8 +71,10 @@ export default function CasesMap({ cases }) {
             filter={['has', 'point_count']}
             layout={{
               'text-field': '{point_count_abbreviated}',
-              'text-size': 12,
-              'color': 'white'
+              'text-size': 14,
+            }}
+            paint={{
+              'text-color': 'white'
             }}
           />
           <Layer
@@ -81,7 +83,7 @@ export default function CasesMap({ cases }) {
             source="cases"
             filter={['!', ['has', 'point_count']]}
             paint={{
-              'circle-color': '#ff66ff',
+              'circle-color': 'darkgrey',
               'circle-radius': 10,
               'circle-stroke-width': 0
             }}

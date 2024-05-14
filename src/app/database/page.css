@@ -4,7 +4,7 @@
 }
 
 .case-card.active {
-  background: rgb(181, 35, 243);
+  background: grey;
   color: white;
   border-radius: 20px;
 }
