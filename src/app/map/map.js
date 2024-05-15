@@ -11,6 +11,10 @@ export default function CasesMap({ cases }) {
 
   const [selectedCases, setSelectedCases] = useState([]);
 
+  useEffect(() => {
+    window.scrollBy({ top: 70, behavior: 'smooth' });
+  }, [selectedCases]);
+
   const geojson = {
     type: 'FeatureCollection',
     features: cases.map((c) => ({
@@ -118,7 +122,7 @@ export default function CasesMap({ cases }) {
         </Source>
     </Map>
 
-    <div>
+    <div id="cases-list">
       {selectedCases.map((c) =>
         <div className='mt-4' key={c.properties.id}>
           <CaseDetails props={c.properties}></CaseDetails>
