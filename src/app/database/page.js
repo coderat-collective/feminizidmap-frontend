@@ -2,7 +2,7 @@ import "./page.css";
 import CasesList from "./CasesList";
 
 async function getData() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/cases?populate=deep&pagination[pageSize]=200`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/cases?populate=deep&pagination[pageSize]=20000`);
   if (!res.ok) { throw new Error('Failed to fetch data') }
   return res.json()
 }

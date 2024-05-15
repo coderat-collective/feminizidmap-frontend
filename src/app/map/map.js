@@ -1,7 +1,7 @@
 // this is necessary since leaflet is not server-side compatible
 "use client"
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import CaseDetails from '../CaseDetails';
 import Map, { Source, Layer } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
