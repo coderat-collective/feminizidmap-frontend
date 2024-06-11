@@ -1,0 +1,53 @@
+{
+  "pages": {
+    "/_not-found/page": [
+      "static/chunks/webpack-4b0e41c7fd2544ad.js",
+      "static/chunks/fd9d1056-81c0fcf982ca514e.js",
+      "static/chunks/23-1bae3dac406fd368.js",
+      "static/chunks/main-app-3bdab8382d25a581.js",
+      "static/chunks/app/_not-found/page-b7ed5785b56ee382.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-4b0e41c7fd2544ad.js",
+      "static/chunks/fd9d1056-81c0fcf982ca514e.js",
+      "static/chunks/23-1bae3dac406fd368.js",
+      "static/chunks/main-app-3bdab8382d25a581.js",
+      "static/css/2f71e0d51b6954c9.css",
+      "static/css/0fdd3f077818801d.css",
+      "static/css/8e3383be5c7d31f6.css",
+      "static/chunks/282-0fa8e861d17c9e77.js",
+      "static/chunks/app/layout-658e515dfe7885b7.js"
+    ],
+    "/about/page": [
+      "static/chunks/webpack-4b0e41c7fd2544ad.js",
+      "static/chunks/fd9d1056-81c0fcf982ca514e.js",
+      "static/chunks/23-1bae3dac406fd368.js",
+      "static/chunks/main-app-3bdab8382d25a581.js",
+      "static/chunks/app/about/page-cad2b3bdba2e2b58.js"
+    ],
+    "/database/page": [
+      "static/chunks/webpack-4b0e41c7fd2544ad.js",
+      "static/chunks/fd9d1056-81c0fcf982ca514e.js",
+      "static/chunks/23-1bae3dac406fd368.js",
+      "static/chunks/main-app-3bdab8382d25a581.js",
+      "static/css/f92a0f4c937b4db2.css",
+      "static/chunks/app/database/page-35a4a97dc6e0024f.js"
+    ],
+    "/map/page": [
+      "static/chunks/webpack-4b0e41c7fd2544ad.js",
+      "static/chunks/fd9d1056-81c0fcf982ca514e.js",
+      "static/chunks/23-1bae3dac406fd368.js",
+      "static/chunks/main-app-3bdab8382d25a581.js",
+      "static/css/a08af8f09d184a96.css",
+      "static/chunks/768-462a8328d7652a05.js",
+      "static/chunks/app/map/page-2d27cdae22fcacdc.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-4b0e41c7fd2544ad.js",
+      "static/chunks/fd9d1056-81c0fcf982ca514e.js",
+      "static/chunks/23-1bae3dac406fd368.js",
+      "static/chunks/main-app-3bdab8382d25a581.js",
+      "static/chunks/app/page-e57a584d0096d693.js"
+    ]
+  }
+}
